@@ -1,0 +1,99 @@
+  set number
+  set mouse=a
+  set numberwidth=1
+  set clipboard=unnamed
+  syntax enable
+  set showcmd
+  set ruler
+  set encoding=utf-8
+  set showmatch
+  set sw=2
+  set relativenumber
+  set laststatus=2
+  
+
+
+  call plug#begin('~/.vim/plugged')
+
+  "tema
+ 
+ "IDE
+  Plug 'easymotion/vim-easymotion'
+  Plug 'Yggdroot/indentLine'  
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+ 
+
+
+  "typing
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'alvan/vim-closetag'
+  Plug 'AndrewRadev/tagalong.vim'
+
+  "status bar
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'  
+ 
+  "Syntax
+  Plug 'sheerun/vim-polyglot'
+  Plug 'JulesWang/css.vim' 
+  Plug 'alexlafroscia/postcss-syntax.vim'
+  Plug 'cakebaker/scss-syntax.vim'
+  Plug 'lyuts/vim-rtags'
+
+
+  "Tree
+  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
+
+  "autocomplete
+  Plug 'sirver/ultisnips'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}  
+  Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'} 
+  Plug 'tpope/vim-repeat'
+
+  call plug#end()
+
+  
+  packadd! dracula_pro
+  packadd! kite
+  let g:dracula_colorterm = 0 
+  colorscheme dracula_pro
+  set background=dark
+  let g:airline_theme = 'dracula_pro'  
+  let g:indentLine_color_term = 259
+  let g:indentLine_setColors = 0
+  let NERDTreeQuitOnOpen=0 
+  let mapleader=" "
+  let g:kite_support_languages = ['javascript', 'python']
+  
+  "coc
+  
+  autocmd FileType scss setl iskeyword+=@-@
+  
+  nmap <Leader>s <Plug>(easymotion-s2)
+  nmap <Leader>nt :NERDTreeFind<CR>
+  nmap <Leader>p :Files<CR>
+  nmap <Leader>w  :w<CR> 
+  nmap <Leader>q  :q<CR>
+  nmap <Leader>sp  :sp<CR>
+  nmap <Leader>vs  :vs<CR>
+  nmap <Leader>0  <esc>0i#  
+  nmap <Leader>pl :Plug
+  nmap <Leader>7  <esc>0i//
+  nmap <Leader>1  <esc>0i<!--
+  nnoremap <Leader>kp :let @*=expand("%")<CR>
+
+  "run current file
+  nnoremap <Leader>x :node! %<cr>
+
+  "go to
+  
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+
